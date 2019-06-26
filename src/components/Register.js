@@ -3,35 +3,32 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 export class Register extends Component {
 
 
-    state = {
-        user: '',
-        email: '',
-        mobno:'',
-        password:'',
-        conpass:''
+    // state = {
+    //     user: '',
+    //     email: '',
+    //     mobno:'',
+    //     password:'',
+    //     conpass:''
 
-      };
+    //   };
      
-      handleChange = (event) => {
-        const input = event.target;
-        const value = 'password' === 'conpass' ? input.checked : input.value;
+    //   handleChange = (event) => {
+    //     const input = event.target;
+    //     const value = input.password === input.conpass ? true : false;
+    //     this.setState({ [input.name]: value });
+    //   };
      
-        this.setState({ [input.name]: value });
-      };
-     
-      handleFormSubmit = () => {};
+    //   handleFormSubmit = () => {};
 
-      handleFormSubmit = () => {
-        const { user, email, mobno, password, conpass } = this.state;
-        localStorage.setItem('email', email);
-        localStorage.setItem('mobno', mobno);
-        localStorage.setItem('password', password);
-        localStorage.setItem('conpass', conpass);
-        localStorage.setItem('user', password ? user : '');
-      };
+    //   handleFormSubmit = () => {
+    //     const { user, email, mobno, password, conpass } = this.state;
+    //     localStorage.setItem('email', email);
+    //     localStorage.setItem('mobno', mobno);
+    //     localStorage.setItem('con', password ? user : '');
+    //   };
 
      
-      render() { /*...*/ }
+    //   render() { /*...*/ }
 
     render() {
         return (
@@ -51,8 +48,7 @@ export class Register extends Component {
                           </div>
                      </div>
           
-                     <form onSubmit={this.handleFormSubmit}
-                           class="my-5">
+                     <form class="my-5">
                      <div class="form-group">
                          <label class="form-label">Your name</label>
                          <input type="text" class="form-control" name="user" />
