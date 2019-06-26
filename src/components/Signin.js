@@ -1,6 +1,27 @@
 import React, { Component } from 'react'
 import {  Link } from "react-router-dom";
 export class Signin extends Component {
+  state = {
+    emailid: "",
+    password: "",
+    rememberMe: false,
+    
+}
+
+
+handleChange= (event) => {
+    const input =event.target;
+    const value = input.type === 'checkbox' ? input.checked : input.value;
+    this.setState({[input.name]: value});
+};
+handleFormSubmit = () => {
+    const { emailid, password, rememberMe } = this.state;
+    localStorage.setItem('rememberMe', rememberMe);
+    localStorage.setItem('emailid', rememberMe ? emailid : '');
+    localStorage.setItem('password', rememberMe ? password : '');
+
+};
+ 
     render() {
         return ( 
 
@@ -19,28 +40,28 @@ export class Signin extends Component {
                             </div>
                            </div>
                          </div>
-                         <form class="my-5">
-                          <div class="form-group">
-                            <label class="form-label">Email</label>
-                             <input type="text" class="form-control" />
-                             <div class="clearfix"></div>
-                          </div>
+                         <form class="my-5" onSubmit={this.handleFormSubmit}>
                         <div class="form-group">
-                          <label class="form-label d-flex justify-content-between align-items-end">
-                             <span>Password</span>
-                             <a href="pages_authentication_password-reset.html" class="d-block small">Forgot password?</a>
-                          </label>
-                          <input type="password" class="form-control" />
-                          <div class="clearfix"></div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center m-0">
-                    <label class="custom-control custom-checkbox m-0">
-                        <input type="checkbox" class="custom-control-input" />
-                        <span class="custom-control-label">Remember me</span>
-                    </label>
-                    <button type="button" class="btn btn-primary">Sign In</button>
-                </div>
-               </form>
+                            <label class="form-label">Email</label>
+                            <input name= "emailid" type="text" class="form-control" value={this.state.emailid} onChange={this.handleChange}/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label d-flex justify-content-between align-items-end">
+                                <span>Password</span>
+                                <a href="pages_authentication_password-reset.html" class="d-block small">Forgot password?</a>
+                            </label>
+                            <input name="password" type="password" class="form-control" value={this.state.password} onChange={this.handleChange}/>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center m-0">
+                            <label class="custom-control custom-checkbox m-0">
+                                <input name="rememberMe" checked={this.state.rememberMe} onChange={this.handleChange} type="checkbox" class="custom-control-input" />
+                                <span class="custom-control-label">Remember me</span>
+                            </label>
+                            <button type="submit" class="btn btn-primary" >Sign In</button>
+                        </div>                      
+                    </form>
 
                <div class="text-center text-muted">
                 Don't have an account yet?

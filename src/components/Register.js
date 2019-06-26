@@ -3,32 +3,33 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 export class Register extends Component {
 
 
-    // state = {
-    //     user: '',
-    //     email: '',
-    //     mobno:'',
-    //     password:'',
-    //     conpass:''
+    state = {
+        user: '',
+        email: '',
+        mobno:'',
+        password:'',
+        conpass:''
 
-    //   };
+      };
      
-    //   handleChange = (event) => {
-    //     const input = event.target;
-    //     const value = input.password === input.conpass ? true : false;
-    //     this.setState({ [input.name]: value });
-    //   };
+      handleChange = (event) => {
+      
+       
+        
+      };
      
-    //   handleFormSubmit = () => {};
+      handleFormSubmit = () => {};
 
-    //   handleFormSubmit = () => {
-    //     const { user, email, mobno, password, conpass } = this.state;
-    //     localStorage.setItem('email', email);
-    //     localStorage.setItem('mobno', mobno);
-    //     localStorage.setItem('con', password ? user : '');
-    //   };
+      handleFormSubmit = () => {
+        const { user, email, mobno } = this.state;
+        localStorage.setItem('email', email);
+        localStorage.setItem('mobno', mobno);
+        
+       
+      };
 
      
-    //   render() { /*...*/ }
+      render() { /*...*/ }
 
     render() {
         return (
@@ -51,30 +52,30 @@ export class Register extends Component {
                      <form class="my-5">
                      <div class="form-group">
                          <label class="form-label">Your name</label>
-                         <input type="text" class="form-control" name="user" />
+                         <input type="text" class="form-control" name="user" onChange={this.handleChange} />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Your email</label>
-                         <input type="text" class="form-control" name="email" />
+                         <input type="text" class="form-control" name="email" onChange={this.handleChange}/>
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Your Mobile Number</label>
-                         <input type="text" class="form-control" name="mobno" />
+                         <input type="text" class="form-control" name="mobno" onChange={this.handleChange} />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Password</label>
-                         <input type="password" class="form-control" name="Password"/>
+                         <input type="password" class="form-control" name="Password" onChange={this.handleChange}/>
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">
                          <label class="form-label">Confirm Password</label>
-                         <input type="password" class="form-control" name="conpass"/>
+                         <input type="password" class="form-control" name="conpass" onChange={this.handleChange}/>
                          <div class="clearfix"></div>
                      </div>
-                     <button type="button" class="btn btn-primary btn-block mt-4">Sign Up</button>
+                     <button type="submit" class="btn btn-primary btn-block mt-4" onSubmit={this.handleFormSubmit.bind(this)}>Sign Up</button>
                      <div class="bg-lightest text-muted small p-2 mt-4">
                        By clicking "Sign Up", you agree to our
                        <a href="javascript:void(0)">terms of service and privacy policy</a>. We’ll occasionally send you account related emails.
