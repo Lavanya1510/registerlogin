@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {  Link } from "react-router-dom";
 export class Signin extends Component {
   state = {
+     
     emailid: "",
     password: "",
     rememberMe: false,
-    
-}
 
+}
 
 handleChange= (event) => {
     const input =event.target;
@@ -15,6 +15,7 @@ handleChange= (event) => {
     this.setState({[input.name]: value});
 };
 handleFormSubmit = () => {
+    this.props.history.push('/Dashboard')
     const { emailid, password, rememberMe } = this.state;
     localStorage.setItem('rememberMe', rememberMe);
     localStorage.setItem('emailid', rememberMe ? emailid : '');
@@ -25,8 +26,7 @@ handleFormSubmit = () => {
     render() {
         return ( 
 
- <div>
-                 
+ <div>  
                  <div class="page-loader">
                        <div class="bg-primary"></div>
                  </div>
@@ -59,6 +59,7 @@ handleFormSubmit = () => {
                                 <input name="rememberMe" checked={this.state.rememberMe} onChange={this.handleChange} type="checkbox" class="custom-control-input" />
                                 <span class="custom-control-label">Remember me</span>
                             </label>
+                            
                             <button type="submit" class="btn btn-primary" >Sign In</button>
                         </div>                      
                     </form>
@@ -66,7 +67,8 @@ handleFormSubmit = () => {
                <div class="text-center text-muted">
                 Don't have an account yet?
                 <a href="pages_authentication_register-v1.html">
-                <Link to="Register"> Sign Up</Link></a>
+                <Link to="/Register" 
+                > Sign Up</Link></a>
                  
                </div>
 
