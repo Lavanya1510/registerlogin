@@ -17,21 +17,24 @@ handleChange= (event) => {
 handleFormSubmit = (event) => {
     event.preventDefault();
     this.setState({email: event.target.value});
+      this.setState({password: event.target.value});
     const emailid=this.state.email;
+    const pass=this.state.password;
     // let password = document.getElementById('password').value;
     //  console.log(emailid)
     const emailJson = localStorage.getItem('email');
+    const password1 = localStorage.getItem('password');
     // console.log(emailJson)
     // if(!emailJson){
     //     alert('empty');
     // }
     //emailJson = JSON.parse(emailJson);
     for (let i = 0; i < emailJson.length; i++) {
-        if (emailid === emailJson) {
+        if (emailid === emailJson && pass === password1) {
             this.props.history.push('/Dashboard')
             return;
     }
-    if (emailid !== emailJson){
+    if (emailid !== emailJson && pass === password1){
         alert('Error');
         return false;
     }
