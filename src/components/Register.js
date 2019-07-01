@@ -4,20 +4,23 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 export class Register extends Component {
 
-
-    state = {
+  constructor(props){
+    super(props)
+    this.state= {
         user: '',
         email: '',
         mobno:'',
-        password:'',
         conpass:'',
         rememberMe: false,
-
       };
+    }
+   
+ 
       handleChange= (event) => {
         const input =event.target;
         const value = input.type === 'checkbox' ? input.checked : input.value;
         this.setState({[input.name]: value});
+      
     };
     
      
@@ -111,7 +114,7 @@ export class Register extends Component {
                      </div>
                      <div class="form-group">
                          <label class="form-label">Password</label>
-                         <input type="password" class="form-control" name="password" value={this.state.password} onChange={this.handleChange}/>
+                         <input type="password" class="form-control" name="password" value={this.state.password} onChange={this.handleChange} />
                          <div class="clearfix"></div>
                      </div>
                      <div class="form-group">

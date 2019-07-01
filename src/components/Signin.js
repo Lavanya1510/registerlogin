@@ -1,25 +1,51 @@
 import React, { Component } from 'react'
 import {  Link } from "react-router-dom";
-export class Signin extends Component {
-  state = {
-     
-    emailid: "",
-    password: "",
-    rememberMe: false,
 
-}
+export class Signin extends Component {
+    constructor(props){
+        super(props);
+      console.log(this.props)
+    }
 
 handleChange= (event) => {
     const input =event.target;
     const value = input.type === 'checkbox' ? input.checked : input.value;
     this.setState({[input.name]: value});
+   
 };
-handleFormSubmit = () => {
-    this.props.history.push('/Dashboard')
-    const { emailid, password, rememberMe } = this.state;
-    localStorage.setItem('rememberMe', rememberMe);
-    localStorage.setItem('emailid', rememberMe ? emailid : '');
-    localStorage.setItem('password', rememberMe ? password : '');
+
+handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.setState({email: event.target.value});
+    const emailid=this.state.email;
+    // let password = document.getElementById('password').value;
+    //  console.log(emailid)
+    const emailJson = localStorage.getItem('email');
+    // console.log(emailJson)
+    // if(!emailJson){
+    //     alert('empty');
+    // }
+    //emailJson = JSON.parse(emailJson);
+    for (let i = 0; i < emailJson.length; i++) {
+        if (emailid === emailJson) {
+            this.props.history.push('/Dashboard')
+            return;
+    }
+    if (emailid !== emailJson){
+        alert('Error');
+        return false;
+    }
+}
+   
+    //   const { password} = this.state;
+     
+    //   if(this.props.password !== this.state.password1){
+    //     console.log(this.props);
+
+    //   }
+    //   if(this.props.password === this.state.password1){
+    //     this.props.history.push('/Dashboard')
+    //   }
 
 };
  
@@ -43,7 +69,7 @@ handleFormSubmit = () => {
                          <form class="my-5" onSubmit={this.handleFormSubmit}>
                         <div class="form-group">
                             <label class="form-label">Email</label>
-                            <input name= "emailid" type="text" class="form-control" value={this.state.emailid} onChange={this.handleChange}/>
+                            <input name= "email" type="email" class="form-control"  onChange={this.handleChange}/>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
@@ -51,17 +77,18 @@ handleFormSubmit = () => {
                                 <span>Password</span>
                                 <a href="pages_authentication_password-reset.html" class="d-block small">Forgot password?</a>
                             </label>
-                            <input name="password" type="password" class="form-control" value={this.state.password} onChange={this.handleChange}/>
+                            <input name="password1" type="password" class="form-control"  onChange={this.handleChange}/>
                             <div class="clearfix"></div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center m-0">
                             <label class="custom-control custom-checkbox m-0">
-                                <input name="rememberMe" checked={this.state.rememberMe} onChange={this.handleChange} type="checkbox" class="custom-control-input" />
+                                <input name="rememberMe"  onChange={this.handleChange} type="checkbox" class="custom-control-input" />
                                 <span class="custom-control-label">Remember me</span>
                             </label>
                             
                             <button type="submit" class="btn btn-primary" >Sign In</button>
-                        </div>                      
+                        </div>   
+                        
                     </form>
 
                <div class="text-center text-muted">
@@ -69,6 +96,7 @@ handleFormSubmit = () => {
                 <a href="pages_authentication_register-v1.html">
                 <Link to="/Register" 
                 > Sign Up</Link></a>
+                
                  
                </div>
 
