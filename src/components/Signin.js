@@ -34,7 +34,7 @@ handleFormSubmit = (event) => {
             this.props.history.push('/Dashboard')
             return;
     }
-    if (emailid !== emailJson && pass === password1){
+    if (emailid !== emailJson && pass !== password1){
         alert('Error');
         return false;
     }
