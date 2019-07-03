@@ -80,7 +80,7 @@ handleFormSubmit = (event) => {
                                 <span>Password</span>
                                 <a href="pages_authentication_password-reset.html" class="d-block small">Forgot password?</a>
                             </label>
-                            <input name="password1" type="password" class="form-control"  onChange={this.handleChange}/>
+                            <input name="password" type="password" class="form-control"  onChange={this.handleChange}/>
                             <div class="clearfix"></div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center m-0">
